@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter
 from src import login
 from src import register
+from src import submit
 
 '''
 Initializing root as window
@@ -53,8 +54,7 @@ class bms:
             
         else:
             root.title('Submit Book')
-            l1=Label(self.bmsFrame,text="Submit Book",font=('Arial 20'))
-            l1.pack()
+            submitWindow=submit.submitBooks.openWin(self,self.bmsFrame)
 
 if __name__=="__main__":
     

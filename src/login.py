@@ -10,6 +10,7 @@ class login:
         entryContainer=Frame(self.loginFrame)
         labelContainer.grid(row=1,column=1,padx=10)
         entryContainer.grid(row=1,column=2,padx=10)
+        # add a back and a new user button
 
         #LABELS
         userName=Label(labelContainer,text='User Name: ',font=('Verdana 14'))
