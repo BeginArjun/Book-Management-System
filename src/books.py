@@ -29,6 +29,3 @@ class books:
         else:
             command="UPDATE BOOKS SET QUANTITY=QUANTITY+{} WHERE BOOK_NAME={}".format(self.quantity,self.bookname)
             database.database.executeUpdate(command)
-
-
-    
