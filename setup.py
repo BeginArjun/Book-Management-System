@@ -25,7 +25,7 @@ class bms:
 
         #LABELS
         welcomeMsg = Label(
-            topFrame, text='BMS( BOOKS MANAGEMENT SYSTEM)', font=('Verdana 20'))
+            topFrame, text='BOOK MANAGEMENT SYSTEM', font=('Verdana 20'))
         welcomeMsg.pack()
 
         #Buttons
