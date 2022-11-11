@@ -19,7 +19,7 @@ class bms:
         self.bmsFrame = Frame(root, bg='grey', width=250, height=600)
         buttonContainer = Frame(self.bmsFrame, bg='white', width=100, height=300)
         topFrame = Frame(root, bg='grey')
-        topFrame.grid(row=1, column=2)
+        topFrame.grid(row=1, column=2,pady=20)
         self.bmsFrame.grid(row=2, column=2)
         buttonContainer.pack()
 
@@ -29,10 +29,10 @@ class bms:
         welcomeMsg.pack()
 
         #Buttons
-        loginBtn = Button(buttonContainer, bg='blue', text='Login', padx=50,command=lambda:self.bmsUserClick(0))
-        registerBtn = Button(buttonContainer, bg='blue', text='New User', padx=50,command=lambda:self.bmsUserClick(1))
+        loginBtn = Button(buttonContainer, bg='blue', text='Login', padx=50,command=lambda:self.bmsUserClick(0),font=('Verdana 16'))
+        registerBtn = Button(buttonContainer, bg='blue', text='New User', padx=50,command=lambda:self.bmsUserClick(1),font=('Verdana 16'))
         availBooksBtn = Button(buttonContainer, bg='blue',
-                           text='Available Books', padx=50,command=lambda:self.bmsUserClick(2))
+                           text='Available Books', padx=50,command=lambda:self.bmsUserClick(2),font=('Verdana 16'))
 
         #Packing the Buttons
         loginBtn.grid(row=1, column=1, padx=20, pady=10)

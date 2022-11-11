@@ -3,6 +3,7 @@ This Module Contains Login Page
 '''
 from tkinter import *
 from src import database
+from src import register
 class login:
     def __init__(self,mainFrame):
         #FRAMES
@@ -22,20 +23,31 @@ class login:
         self.password.grid(row=3,column=1)
 
         #ENTRY
-        self.userNameEntry=Entry(entryContainer)
-        self.passwordEntry=Entry(entryContainer,show='*')
-        self.phoneNoEntry=Entry(entryContainer)
+        self.userNameEntry=Entry(entryContainer,font=('Verdana 14'))
+        self.passwordEntry=Entry(entryContainer,show='*',font=('Verdana 14'))
+        self.phoneNoEntry=Entry(entryContainer,font=('Verdana 14'))
         self.userNameEntry.grid(row=1,column=1)
         self.phoneNoEntry.grid(row=2,column=1)
         self.passwordEntry.grid(row=3,column=1)
 
         #BUTTON
-        self.submitBtn=Button(mainFrame,text='LOGIN',bg='blue',fg='white',command=self.validateCredentials)
+        self.submitBtn=Button(mainFrame,text='LOGIN',bg='blue',fg='white',command=self.validateCredentials,font=('Verdana 14'))
+        self.backBtn=Button(mainFrame,text='REGISTER',bg='blue',fg='white',command=self.openRegister,font=('Verdana 14'))
+        self.backBtn.grid(row=2,column=3)
         self.submitBtn.grid(row=2,column=2)
 
 
     def openWin(self,mainFrame):
         login(mainFrame)
+
+    def clearFrame(self):
+        for widget in self.loginFrame.winfo_children():
+            widget.destroy()
+
+    def openRegister(self):
+        self.clearFrame()
+        registerWindow=register.registerWin(self.loginFrame)
+        registerWindow.openWin(self.loginFrame)
 
     def validateCredentials(self):
         username=self.userNameEntry.get()

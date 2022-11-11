@@ -3,7 +3,7 @@ This Module Contains Registration Window
 '''
 from tkinter import *
 from src import users
-from src import database
+from src import login
 class registerWin:
     def __init__(self,mainFrame):
         self.registerFrame=mainFrame
@@ -30,14 +30,14 @@ class registerWin:
         password.grid(row=6,column=1)
 
         #Entry
-        self.nameEntry=Entry(entryFrame)
-        self.addressEntry=Entry(entryFrame)
+        self.nameEntry=Entry(entryFrame,font=('Verdana 14'))
+        self.addressEntry=Entry(entryFrame,font=('Verdana 14'))
         self.var=str()
         self.maleGen=Radiobutton(genderFrame,text='Male',variable=self.var,value='M')
         self.femGen=Radiobutton(genderFrame,text='Female',variable=self.var,value='F')
-        self.mobileNoEntry=Entry(entryFrame)
-        self.emailIdEntry=Entry(entryFrame)
-        self.passwordEntry=Entry(entryFrame)
+        self.mobileNoEntry=Entry(entryFrame,font=('Verdana 14'))
+        self.emailIdEntry=Entry(entryFrame,font=('Verdana 14'))
+        self.passwordEntry=Entry(entryFrame,font=('Verdana 14'))
 
         self.nameEntry.grid(row=1,column=1,pady=10)
         self.addressEntry.grid(row=2,column=1,pady=10)
@@ -48,14 +48,26 @@ class registerWin:
         self.passwordEntry.grid(row=6,column=1)
         
         #Buttons
-        self.submitBtn=Button(mainFrame,text='SUBMIT',bg='blue',fg='white',command=self.submit)
-        self.submitBtn.grid(row=2,column=2)
+        self.submitBtn=Button(mainFrame,text='SUBMIT',bg='blue',fg='white',command=self.submit,font=('Verdana 14'))
+        self.loginBtn=Button(mainFrame,text='LOGIN',bg='blue',fg='white',command=self.login,font=('Verdana 14'))
+        self.submitBtn.grid(row=2,column=2,padx=10)
+        self.loginBtn.grid(row=2,column=3,padx=10)
 
     def openWin(self,mainFrame):
         registerWin(mainFrame)
 
     def returnGen(self):
         return self.var
+
+    def clearFrame(self):
+        for widget in self.registerFrame.winfo_children():
+            widget.destroy()
+
+    def login(self):
+        self.clearFrame()
+        loginWindow=login.login(self.registerFrame)
+        loginWindow .openWin(self.registerFrame)
+
     def submit(self):
         username=self.nameEntry.get()
         address=self.addressEntry.get()
