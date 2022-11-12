@@ -16,22 +16,22 @@ root=tkinter.Tk()
 class bms:
     def __init__(self):
         root.title('Book Management System')
-        self.bmsFrame = Frame(root, bg='grey', width=250, height=600)
-        buttonContainer = Frame(self.bmsFrame, bg='white', width=100, height=300)
-        topFrame = Frame(root, bg='grey')
+        self.bmsFrame = Frame(root,bg='#98C1D9', width=500, height=600)
+        buttonContainer = Frame(self.bmsFrame,bg='#EE6C4D', width=100, height=300)
+        topFrame = Frame(root,bg='#293241')
         topFrame.grid(row=1, column=2,pady=20)
         self.bmsFrame.grid(row=2, column=2)
         buttonContainer.pack()
 
         #LABELS
-        welcomeMsg = Label(
-            topFrame, text='BOOK MANAGEMENT SYSTEM', font=('Verdana 20'))
-        welcomeMsg.pack()
+        banner = Label(
+            topFrame, text='BOOK MANAGEMENT SYSTEM', font=('Courier 20'),bg='#293241',fg='#E0FBFC')
+        banner.pack()
 
         #Buttons
-        loginBtn = Button(buttonContainer, bg='blue', text='Login', padx=50,command=lambda:self.bmsUserClick(0),font=('Verdana 16'))
-        registerBtn = Button(buttonContainer, bg='blue', text='New User', padx=50,command=lambda:self.bmsUserClick(1),font=('Verdana 16'))
-        availBooksBtn = Button(buttonContainer, bg='blue',
+        loginBtn = Button(buttonContainer, bg='#293241',fg="#E0FBFC", text='Login', padx=50,command=lambda:self.bmsUserClick(0),font=('Verdana 16'))
+        registerBtn = Button(buttonContainer, bg='#293241',fg="#E0FBFC", text='New User', padx=50,command=lambda:self.bmsUserClick(1),font=('Verdana 16'))
+        availBooksBtn = Button(buttonContainer, bg='#293241',fg="#E0FBFC",
                            text='Available Books', padx=50,command=lambda:self.bmsUserClick(2),font=('Verdana 16'))
 
         #Packing the Buttons
@@ -57,6 +57,5 @@ class bms:
             submitWindow=submit.submitBooks.openWin(self,self.bmsFrame)
 
 if __name__=="__main__":
-    
     openPage=bms()
     root.mainloop()

@@ -68,6 +68,6 @@ class booksTable:
 
     # Insert Into Table
     def insertIntoTable(self):
-        command="INSERT INTO BOOKS(ISIN,BOOK_NAME,BOOK_PRICE,QUANTITY) VALUES({},'{}',{},{})".format(self.isin,self.b_name,self.b_price,self.quantity)
+        command="INSERT INTO BOOKS(ISIN,BOOK_NAME,BOOK_PRICE,QUANTITY) VALUES('{}','{}',{},{})".format(self.isin,self.b_name,self.b_price,self.quantity)
         db=database()
         db.executeDMLCommand(command)

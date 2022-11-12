@@ -7,20 +7,20 @@ from src import login
 class registerWin:
     def __init__(self,mainFrame):
         self.registerFrame=mainFrame
-        labelFrame=Frame(mainFrame)
-        entryFrame=Frame(mainFrame)
+        labelFrame=Frame(mainFrame,bg='#98C1D9')
+        entryFrame=Frame(mainFrame,bg='#98C1D9')
         labelFrame.grid(row=1,column=1,padx=10)
         entryFrame.grid(row=1,column=2,padx=10)
-        genderFrame=Frame(entryFrame)
+        genderFrame=Frame(entryFrame,bg='#98C1D9')
         genderFrame.grid(row=3,column=1)
 
         #Labels
-        name=Label(labelFrame,text='Name',font=('Veradana 14'))
-        address=Label(labelFrame,text='Address',font=('Veradana 14'))
-        gender=Label(labelFrame,text='Gender',font=('Veradana 14'))
-        mobileNo=Label(labelFrame,text='Mobile Number',font=('Veradana 14'))
-        emailId=Label(labelFrame,text='Email-ID',font=('Veradana 14'))
-        password=Label(labelFrame,text='Password',font=('Veradana 14'))
+        name=Label(labelFrame,text='Name',font=('Veradana 14'),bg='#98C1D9',fg='white')
+        address=Label(labelFrame,text='Address',font=('Veradana 14'),bg='#98C1D9',fg='white')
+        gender=Label(labelFrame,text='Gender',font=('Veradana 14'),bg='#98C1D9',fg='white')
+        mobileNo=Label(labelFrame,text='Mobile Number',font=('Veradana 14'),bg='#98C1D9',fg='white')
+        emailId=Label(labelFrame,text='Email-ID',font=('Veradana 14'),bg='#98C1D9',fg='white')
+        password=Label(labelFrame,text='Password',font=('Veradana 14'),bg='#98C1D9',fg='white')
 
         name.grid(row=1,column=1,pady=10)
         address.grid(row=2,column=1,pady=10)
@@ -32,9 +32,9 @@ class registerWin:
         #Entry
         self.nameEntry=Entry(entryFrame,font=('Verdana 14'))
         self.addressEntry=Entry(entryFrame,font=('Verdana 14'))
-        self.var=str()
-        self.maleGen=Radiobutton(genderFrame,text='Male',variable=self.var,value='M')
-        self.femGen=Radiobutton(genderFrame,text='Female',variable=self.var,value='F')
+        self.var=IntVar()
+        self.maleGen=Radiobutton(genderFrame,text='Male',variable=self.var,value=1,font=('Veradana 14'),bg='#98C1D9')
+        self.femGen=Radiobutton(genderFrame,text='Female',variable=self.var,value=2,font=('Veradana 14'),bg='#98C1D9')
         self.mobileNoEntry=Entry(entryFrame,font=('Verdana 14'))
         self.emailIdEntry=Entry(entryFrame,font=('Verdana 14'))
         self.passwordEntry=Entry(entryFrame,font=('Verdana 14'))
@@ -48,8 +48,8 @@ class registerWin:
         self.passwordEntry.grid(row=6,column=1)
         
         #Buttons
-        self.submitBtn=Button(mainFrame,text='SUBMIT',bg='blue',fg='white',command=self.submit,font=('Verdana 14'))
-        self.loginBtn=Button(mainFrame,text='LOGIN',bg='blue',fg='white',command=self.login,font=('Verdana 14'))
+        self.submitBtn=Button(mainFrame,text='SUBMIT',bg='#293241',fg='#E0FBFC',command=self.submit,font=('Verdana 14'))
+        self.loginBtn=Button(mainFrame,text='LOGIN',bg='#293241',fg='#E0FBFC',command=self.login,font=('Verdana 14'))
         self.submitBtn.grid(row=2,column=2,padx=10)
         self.loginBtn.grid(row=2,column=3,padx=10)
 
@@ -57,7 +57,11 @@ class registerWin:
         registerWin(mainFrame)
 
     def returnGen(self):
-        return self.var
+        g=['M','F']
+        if self.var.get()==1:
+            return g[0]
+        else:
+            return g[1]
 
     def clearFrame(self):
         for widget in self.registerFrame.winfo_children():
@@ -78,5 +82,6 @@ class registerWin:
         new_user=users.user(username,address,gender,mobileNo,emailID,passwd)
         new_user.addUserToDatabase()
         self.submitBtn.configure(text='Registered!')
+        self.login()
 
 
