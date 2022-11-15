@@ -2,6 +2,7 @@
 This Module Contains The Home Window 
 '''
 from tkinter import *
+from tkinter import messagebox
 from src import database
 class homeWind:
     def __init__(self,mainFrame,user):
@@ -14,7 +15,7 @@ class homeWind:
         #Labels
         welcomeMsg=Label(self.topFrame,bg ='#293241',fg='white',text="Welcome, {} !".format(user),font=('Verdana 20'))
         userName=Label(self.contentFrame,text="User Name",font=('Verdana 14'),bg='#98C1D9',fg='white')
-        bookName=Label(self.contentFrame,text="Book Frame",font=('Verdana 14'),bg='#98C1D9',fg='white')
+        bookName=Label(self.contentFrame,text="Book Name",font=('Verdana 14'),bg='#98C1D9',fg='white')
         isin=Label(self.contentFrame,text="ISIN",font=('Verdana 14'),bg='#98C1D9',fg='white')
 
         welcomeMsg.grid(row=1,column=3,pady=20)
@@ -54,4 +55,4 @@ class homeWind:
             self.submitbtn.configure(text="ORDER SUCCESSFULL")
             data.executeUpdate("UPDATE BOOKS SET QUANTITY=QUANTITY-1 WHERE ISIN='{}'".format(isin))
         else:
-            self.submitbtn.configure(text="ORDER FAILED")
+            messagebox.showerror('Error','Book Not Available')

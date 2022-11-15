@@ -2,6 +2,7 @@
 This Module Contains Login Page
 '''
 from tkinter import *
+from tkinter import messagebox
 from src import database
 from src import home
 from src import register
@@ -59,8 +60,8 @@ class login:
         db.executeDDLCommand(command)
         count=db.rowcount()
         if count==1:
-            self.submitBtn.configure(text='Login Successfull')
+            messagebox.showinfo('Login Success','Login Successfull')
             self.clearFrame()
             homeWin=home.homeWind(self.loginFrame,username)
         else:
-            self.userNameEntry.configure(bg='red')
+            messagebox.showerror('Error','Login Failed! Incorrect User Name or Password or Phone Number. Try Again!')

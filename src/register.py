@@ -2,6 +2,7 @@
 This Module Contains Registration Window
 '''
 from tkinter import *
+from tkinter import messagebox
 from src import users
 from src import login
 class registerWin:
@@ -56,6 +57,11 @@ class registerWin:
     def openWin(self,mainFrame):
         registerWin(mainFrame)
 
+    def isInvalid(self):
+        if self.addressEntry.get()==' ' or self.nameEntry.get()==' ' or self.var.get()==' ' or self.mobileNoEntry.get()==' ' or self.emailIdEntry.get()==' ' or self.passwordEntry.get()==' ':
+            messagebox.showerror('Error','Invalid Input')
+        elif self.addressEntry.get()=='' or self.nameEntry.get()=='' or self.var.get()=='' or self.mobileNoEntry.get()=='' or self.emailIdEntry.get()=='' or self.passwordEntry.get()=='':
+            messagebox.showerror('Error','Invalid Input')
     def returnGen(self):
         g=['M','F']
         if self.var.get()==1:
@@ -79,9 +85,10 @@ class registerWin:
         gender=self.returnGen()
         emailID=self.emailIdEntry.get()
         passwd=self.passwordEntry.get()
+        self.isInvalid()
         new_user=users.user(username,address,gender,mobileNo,emailID,passwd)
         new_user.addUserToDatabase()
-        self.submitBtn.configure(text='Registered!')
+        messagebox.showinfo('Success','Registration Successful')
         self.login()
 
 

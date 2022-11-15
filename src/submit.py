@@ -2,6 +2,7 @@
 This Module is for Submitting Books
 '''
 from tkinter import *
+from tkinter import messagebox
 from src import database
 class submitBooks:
     def __init__(self,mainFrame):
@@ -53,3 +54,4 @@ class submitBooks:
 
         dbase=database.booksTable(isin,b_name,price,qty)
         dbase.insertIntoTable()
+        messagebox.showinfo('Success','Books Added!')
